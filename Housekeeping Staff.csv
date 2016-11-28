@@ -1,2 +1,2 @@
-Name,Username,Password,Unique ID,Status,Till When,Task Status
-mayank,mayank,mayank,4617899,Available,None,None
+Name,Username,Password,Unique ID,Status,Till When,Task Status,gender,address,DOB
+mayank,mayank,mayank,4617899,Available,None,None,Male,mayankaddr,2/3/1980
