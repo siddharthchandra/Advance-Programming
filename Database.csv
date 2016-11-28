@@ -1,12 +1,12 @@
-Unique ID,Password,Department,Post,Username
-4617890,arun,Admin,Admin,Arun
-4617891,siddharth,Audio-Video,Staff,Siddharth
-4617892,prasoon,Audio-Video,Supervisor,Prasoon
-4617893,rishabh,Electricity,Supervisor,Rishabh
-4617894,ravi,HVAC,Supervisor,Ravi
-4617895,pranav,Housekeeping,Supervisor,Pranav
-4617896,gaurav,Security,Supervisor,Gaurav
-4617897,naveen,Electricity,Staff,Naveen
-4617898,suarabh,HVAC,Staff,Saurabh
-4617899,mayank,Housekeeping,Staff,Myank
-4617900,kartik,Security,Staff,Kartik
+Unique ID,Password,Department,Post,Username.Status,TaskStatus
+4617890,arun,Admin,Admin,Arun,Available,NotDefined
+4617891,siddharth,Audio-Video,Staff,Siddharth,Available,NotDefined
+4617892,prasoon,Audio-Video,Supervisor,Prasoon,Available,NotDefined
+4617893,rishabh,Electricity,Supervisor,Rishabh,Available,NotDefined
+4617894,ravi,HVAC,Supervisor,Ravi,Available,NotDefined
+4617895,pranav,Housekeeping,Supervisor,Pranav,Available,NotDefined
+4617896,gaurav,Security,Supervisor,Gaurav,Available,NotDefined
+4617897,naveen,Electricity,Staff,Naveen,Available,NotDefined
+4617898,suarabh,HVAC,Staff,Saurabh,Available,NotDefined
+4617899,mayank,Housekeeping,Staff,Myank,Available,NotDefined
+4617900,kartik,Security,Staff,Kartik,Available,NotDefined
