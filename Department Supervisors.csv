@@ -1,6 +1,6 @@
-Name,Username,Password,Unique ID,Department,gender,address,DOB
-Prasoon,prasoon15157,prasoon,4617892,Audio-Video,Male,prasoonaddr,3/10/1997
-Rishabh,rishabh007,rishabh,4617893,Electricity,Male,rishabhaddr,3/10/1992
-Ravi,ravi123,ravi,4617894,HVACV,Male,raviaddr,3/10/1993
-Pranav,pranav456,pranav,4617895,Housekeeping,Male,pranavaddr,3/10/1987
-Gaurav,gaurav23,gaurav,4617896,Security,Male,gauravaddr,3/11/1997
+Name,Username,Password,Unique ID,Department
+Prasoon,prasoon15157,prasoon,4617892,Audio-Video
+Rishabh,rishabh007,rishabh,4617893,Electricity
+Ravi,ravi123,ravi,4617894,HVACV
+Pranav,pranav456,pranav,4617895,Housekeeping
+Gaurav,gaurav23,gaurav,4617896,Security
