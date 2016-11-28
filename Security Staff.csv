@@ -1,2 +1,2 @@
-Name,Username,Password,Unique ID,Status,Till When,Task Status
-Kartik,kartik,kartik,4617900,Available,None,None
+Name,Username,Password,Unique ID,Status,Till When,Task Status,gender,address,DOB
+Kartik,kartik,kartik,4617900,Available,None,None,Male,kartikaddr,30/4/1990
