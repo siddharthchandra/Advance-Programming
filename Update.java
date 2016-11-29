@@ -21,7 +21,7 @@ public class Update {
          Writer writer6=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(department),"utf-8"));
          Writer writer7=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(database),"utf-8"));
          Writer writer8=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(assign),"utf-8"));
-         for (User user:list)
+         for (AudioVideo user:list)
         writer1.write(user.getUserType()+","+user.getName()+","+user.getEmail()+","+user.getPhone()+","+user.getUserName()+","+user.getHashedPassword()+","+user.getoAuthToken()+",");
         /*void writeDataToDatabase(String fileName, String dataType, List<User> list) throws IOException {
         try {
