@@ -28,7 +28,7 @@ public class ElectricityStaff {
             jFrame=new JFrame();
             panel=new JPanel();
 
-            head=new JLabel("Housekeeping Staff");
+            head=new JLabel("Electricity Staff");
             Logreq=new JButton("Request Logistics");
             SendLeave=new JButton("Send Leave");
             logout=new JButton("Log Out");
