@@ -110,6 +110,15 @@ public class HousekeepingStaff {
                     submit.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                                          if(userfield.getText().length()==0 && flag1==0)
+                {
+                    flag1=1;
+                    JOptionPane.showMessageDialog(jf1, "Enter your Username !");
+                }             if(material.getText().length()==0 && flag==0)
+                {
+                    flag=1;
+                    JOptionPane.showMessageDialog(jf1, "Enter materials !");
+                }
                             logisticsRequestses.add(new LogisticsRequests(userfield.getText().toString(),departmentList.getSelectedItem().toString(),material.getText().toString(),typeList.getSelectedItem().toString()));
                             jFrame.setVisible(false);
 
