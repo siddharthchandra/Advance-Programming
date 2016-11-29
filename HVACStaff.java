@@ -1,4 +1,4 @@
-mport javax.swing.*;
+import javax.swing.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
@@ -109,6 +109,15 @@ public class HVACStaff {
 
                     submit.addActionListener(new ActionListener() {
                         @Override
+                                      if(userfield.getText().length()==0 && flag1==0)
+                {
+                    flag1=1;
+                    JOptionPane.showMessageDialog(jf1, "Enter your Username !");
+                }             if(material.getText().length()==0 && flag==0)
+                {
+                    flag=1;
+                    JOptionPane.showMessageDialog(jf1, "Enter materials !");
+                }
                         public void actionPerformed(ActionEvent e) {
                             logisticsRequestses.add(new LogisticsRequests(userfield.getText().toString(),departmentList.getSelectedItem().toString(),material.getText().toString(),typeList.getSelectedItem().toString()));
                             jFrame.setVisible(false);
