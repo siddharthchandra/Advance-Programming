@@ -24,9 +24,31 @@ public class Update {
         Writer writer6 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(department), "utf-8"));
         Writer writer7 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(database), "utf-8"));
         Writer writer8 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(assign), "utf-8"));
-        for (AudioVideoStaff user : audiovideostaffs)
+        Writer writer9 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(regrequests), "utf-8"));
+        for (AudioVideoStaff user : audiovideoStaffs)
             writer1.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() + "," + user.getUniqueID() + "," + user.getStatus() + "," + user.getTillWhen() + "," + user.getTaskStatus());
-            writer1.write("\n");
+        writer1.write("\n");
         for(AssignTask assign : assignTasks)
-            writer8.write(
+            writer8.write(assign.getTasknameentered()+","+assign.getDescriptionentered+","+assign.getUniqueIDentered+","+getStaffusernameentered+","+getEquiomentsentered+","+getDeadlineentered+","+getAssignedby()+"\n");
+        for (HousekeepingStaff user : housekeepingStaffs)
+            writer2.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() + "," + user.getUniqueID() + "," + user.getStatus() + "," + user.getTillWhen() + "," + user.getTaskStatus());
+        writer2.write("\n");
+        for (ElectricityStaff user : electricityStaffs)
+         writer5.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() + "," + user.getUniqueID() + "," + user.getStatus() + "," + user.getTillWhen() + "," + user.getTaskStatus());
+        writer5.write("\n");
+        for (HVACStaff user : hvacStaffs)
+            writer4.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() + "," + user.getUniqueID() + "," + user.getStatus() + "," + user.getTillWhen() + "," + user.getTaskStatus());
+        writer4.write("\n");
+        for (SecurityStaff user : securityStaffs)
+            writer3.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() + "," + user.getUniqueID() + "," + user.getStatus() + "," + user.getTillWhen() + "," + user.getTaskStatus());
+        writer3.write("\n");
+        for (RegistrationRequests user : registrationRequestses)
+            writer9.write(user.getUsername() + "," + user.getPassword() + "," + user.getUniqueID() + "," + user.getName() + "," + user.getDepartment() + "," + user.getPost() + "," + user.getDOB()+","+user.getAddress()+","+getGender());
+        writer9.write("\n");
+        for (Database user : databases)
+            writer7.write(user.getUniqueID() + "," + user.getPassword() + "," + user.Department() + "," + user.getPost() + "," + user.getUsername() + "," + user.getName() + "," + user.getStatus());
+        writer7.write("\n");
+        for (DepartmentSupervisors user : departmentSupervisorses)
+            writer6.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() + "," + user.getUniqueID() + "," + user.getDepartment());// + "," + user.getPost() + "," + user.getDOB()+","+user.getAddress()+","+getGender());
+        writer6.write("\n");
     }}
