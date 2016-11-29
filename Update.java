@@ -24,6 +24,9 @@ public class Update {
         Writer writer6 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(department), "utf-8"));
         Writer writer7 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(database), "utf-8"));
         Writer writer8 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(assign), "utf-8"));
-        for (AudioVideo user : ArrayList<AudioVideo>)
+        for (AudioVideoStaff user : audiovideostaffs)
             writer1.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() + "," + user.getUniqueID() + "," + user.getStatus() + "," + user.getTillWhen() + "," + user.getTaskStatus());
+            writer1.write("\n");
+        for(AssignTask assign : assignTasks)
+            writer8.write(
     }}
