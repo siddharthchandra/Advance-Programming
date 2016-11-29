@@ -14,5 +14,36 @@ public class Update {
         String assign="Assigned Tasks.csv";
         String regrequests="Registration Requests.csv";
 
-    }
+    void writeDataToDatabase(String fileName, String dataType, List<User> list) throws IOException {
+        try {
+            Writer writer=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName),"utf-8"));
+   switch (dataType){
+                case "Users": {
+                    for (User user:list) {
+                        writeUser(writer, user);
+                    }
+                    break;
+                }
+                case "Tasks":{
+                    for (Task task:database.getTasks())
+                        writeTask(writer,task);
+                    break;
+                }
+                case "Leave":{
+                    for (Leave leave:database.getLeaveList())
+                        writeLeave(writer,leave);
+                    break;
+                }
+                case "Request":{
+                    for (Request request:database.getRequestList())
+                        writeRequest(writer,request);
+                }
+            }
+            writer.close();
+        }
+        catch (IOException e){
+            throw e;
+        }
+        
+        }
 }
