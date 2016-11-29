@@ -28,7 +28,7 @@ public class HVACStaff {
             jFrame=new JFrame();
             panel=new JPanel();
 
-            head=new JLabel("Housekeeping Staff");
+            head=new JLabel("HVAC Staff");
             Logreq=new JButton("Request Logistics");
             SendLeave=new JButton("Send Leave");
             logout=new JButton("Log Out");
