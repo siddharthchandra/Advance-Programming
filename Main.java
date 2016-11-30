@@ -16,6 +16,7 @@ public class Main {
     private ArrayList<RegistrationRequests>  registrationRequestses;
     private ArrayList<AssignTask> assignTasks;
     private ArrayList<LogisticsRequests> logisticsRequestses;
+    private ArrayList<LeaveRequest> leaveRequests;
     private JFrame jFrame;
     private JPanel jPanel;
     private JLabel head;
@@ -23,7 +24,7 @@ public class Main {
     private JButton register;
     private JPasswordField passwordField;
     int flag=0;
-    Main(ArrayList<RegistrationRequests> registrationRequestses,int para) {
+    Main() {
         //Creating Array-list of different departments
         assignTasks=new ArrayList<AssignTask>();
         audioVideoStaffs = new ArrayList<AudioVideoStaff>();
@@ -33,8 +34,9 @@ public class Main {
         electricityStaffs = new ArrayList<ElectricityStaff>();
         departmentSupervisorses=new ArrayList<DepartmentSupervisors>();
         databases=new ArrayList<Database>();
-        this.registrationRequestses=new ArrayList<RegistrationRequests>(registrationRequestses);
+        registrationRequestses=new ArrayList<RegistrationRequests>();
         logisticsRequestses=new ArrayList<LogisticsRequests>();
+        leaveRequests=new ArrayList<LeaveRequest>();
         //Creating strings of different files of csv
         String audiovideo = "Audio-Video Staff.csv";
         String housekeeping="Housekeeping Staff.csv";
@@ -45,13 +47,14 @@ public class Main {
         String database="Database.csv";
         String logisticsrequests="Logistics.csv";
         String registraionsrequests="Registration Requests.csv";
+        String leave="Leave Requests.csv";
+        String assign="Assigned Tasks.csv";
         String line = "";
         String cvsSplitBy = ",";
 
-        String[] array={audiovideo,housekeeping,security,hvac,electricity,department,database,registraionsrequests,logisticsrequests};
-        for(int i=0;i<9;i++)
+        String[] array={audiovideo,housekeeping,security,hvac,electricity,department,database,registraionsrequests,logisticsrequests,leave,assign};
+        for(int i=0;i<11;i++)
         {
-
             try{
             BufferedReader br = new BufferedReader(new FileReader(array[i]));
             while ((line = br.readLine()) != null) {
@@ -72,12 +75,16 @@ public class Main {
                 }
                 else if(i==6)
                     databases.add(new Database(row[0],row[1],row[2],row[3],row[4],row[5],row[6]));
-                else if(i==7 && para==0) {
+                else if(i==7) {
                     //System.out.println(registrationRequestses.size());
                     registrationRequestses.add(new RegistrationRequests(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8]));
                 }
                 else if (i==8)
                     logisticsRequestses.add(new LogisticsRequests(row[0],row[1],row[2],row[3]));
+                else if(i==9 )
+                    leaveRequests.add(new LeaveRequest(row[0],row[1],row[2],row[3],row[4],row[5]));
+                else if(i==10)
+                    assignTasks.add(new AssignTask(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7]));
             }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -85,6 +92,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
+
         flag=1;
         jFrame=new JFrame("FMS IIIT-DELHI");
         jFrame.setSize(1800,1800);
@@ -115,7 +123,7 @@ public class Main {
                 jFrame.setVisible(false);
                 jFrame.remove(jPanel);
                 //System.out.println("size in register="+registrationRequestses.size());
-               new Register(jFrame,databases,registrationRequestses);
+               new Register(leaveRequests,logisticsRequestses,assignTasks,registrationRequestses,jFrame,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
             }
         });
         login.addActionListener(new ActionListener() {
@@ -123,13 +131,13 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 jFrame.setVisible(false);
                 jFrame.remove(jPanel);
-                System.out.println("size in main="+registrationRequestses.size());
-                new Login(assignTasks,registrationRequestses,jFrame,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
+                //System.out.println("size in main="+registrationRequestses.size());
+                new Login(leaveRequests,logisticsRequestses,assignTasks,registrationRequestses,jFrame,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
             }
         });
     }
     public static void main(String[] args) throws IOException {
-        new Main(new ArrayList<RegistrationRequests>(),0);
+        new Main();
     }
 }
 

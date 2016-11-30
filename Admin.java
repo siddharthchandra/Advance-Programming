@@ -17,7 +17,8 @@ public class Admin {
     private JPanel panel;
     private JFrame jFrame;
     private JButton logout;
-    Admin(ArrayList<AssignTask> assignTasks,ArrayList<RegistrationRequests> registrationRequestses,ArrayList<Database> databases,ArrayList<AudioVideoStaff> audioVideoStaffs,ArrayList<ElectricityStaff> electricityStaffs,ArrayList<HousekeepingStaff> housekeepingStaffs,ArrayList<HVACStaff> hvacStaffs,ArrayList<SecurityStaff> securityStaffs,ArrayList<DepartmentSupervisors> departmentSupervisorses)
+    private JButton leaverequest;
+    Admin(ArrayList<LeaveRequest> leaveRequests,ArrayList<LogisticsRequests> logisticsRequestses,ArrayList<AssignTask> assignTasks,ArrayList<RegistrationRequests> registrationRequestses,ArrayList<Database> databases,ArrayList<AudioVideoStaff> audioVideoStaffs,ArrayList<ElectricityStaff> electricityStaffs,ArrayList<HousekeepingStaff> housekeepingStaffs,ArrayList<HVACStaff> hvacStaffs,ArrayList<SecurityStaff> securityStaffs,ArrayList<DepartmentSupervisors> departmentSupervisorses)
     {
         jFrame=new JFrame();
         panel=new JPanel();
@@ -30,6 +31,7 @@ public class Admin {
         regrequests=new JButton("REGISTRATION REQUESTS");
         logrequests=new JButton("LOGISTICS REQUESTS");
         taskreport=new JButton("TASK REPORTS");
+        leaverequest=new JButton("PENDING LEAVE REQUESTS");
         head.setBounds(580,70,200,50);
         logout.setBounds(1250,50,80,30);
         head.setFont(new Font("Serif", Font.PLAIN, 40));
@@ -41,6 +43,7 @@ public class Admin {
         regrequests.setBounds(550,430,200,50);
         logrequests.setBounds(550,500,200,50);
         taskreport.setBounds(550,570,200,50);
+        leaverequest.setBounds(550,650,200,50);
         panel.setLayout(null);
         new ClockPane(panel);
         panel.add(head);
@@ -52,6 +55,7 @@ public class Admin {
         panel.add(regrequests);
         panel.add(logrequests);
         panel.add(taskreport);
+        panel.add(leaverequest);
         jFrame.add(panel);
         jFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.jpg")));
         jFrame.setVisible(true);
@@ -136,6 +140,7 @@ public class Admin {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                new LogisticsRequestsView(logisticsRequestses, databases,electricityStaffs,audioVideoStaffs,departmentSupervisorses,housekeepingStaffs,hvacStaffs,securityStaffs);
             }
         });
         taskreport.addActionListener(new ActionListener() {
@@ -148,12 +153,18 @@ public class Admin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new Update(assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
+                    new Update(logisticsRequestses,leaveRequests,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
                 jFrame.setVisible(false);
-                new Main(registrationRequestses,0);
+                new Main();
+            }
+        });
+        leaverequest.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new LeaveRequestsView(leaveRequests);
             }
         });
 

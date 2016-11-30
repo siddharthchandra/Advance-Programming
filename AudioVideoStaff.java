@@ -1,4 +1,4 @@
-import javax.swing.*;
+import  javax.swing.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
@@ -109,21 +109,22 @@ public class AudioVideoStaff {
 
                     submit.addActionListener(new ActionListener() {
                         @Override
-                        int flag1=0,flag=0;
                         public void actionPerformed(ActionEvent e) {
-                             if(userfield.getText().length()==0 && flag1==0)
-                {
-                    flag1=1;
-                    JOptionPane.showMessageDialog(jf1, "Enter your Username !");
-                }             if(material.getText().length()==0 && flag==0)
-                {
-                    flag=1;
-                    JOptionPane.showMessageDialog(jf1, "Enter materials !");
-                }
-                            
-                            logisticsRequestses.add(new LogisticsRequests(userfield.getText().toString(),departmentList.getSelectedItem().toString(),material.getText().toString(),typeList.getSelectedItem().toString()));
-                            jFrame.setVisible(false);
-
+                            int flag=0;
+                            int flag1=0;
+                            if(userfield.getText().length()==0 && flag1==0)
+                            {
+                                flag1=1;
+                                JOptionPane.showMessageDialog(jFrame, "Enter your Username !");
+                            }        else    if(material.getText().length()==0 && flag==0)
+                            {
+                                flag=1;
+                                JOptionPane.showMessageDialog(jFrame, "Enter materials !");
+                            }
+                            if(flag==0 && flag1==0) {
+                                logisticsRequestses.add(new LogisticsRequests(userfield.getText().toString(), departmentList.getSelectedItem().toString(), material.getText().toString(), typeList.getSelectedItem().toString()));
+                                jFrame.setVisible(false);
+                            }
                         }
                     });
                 }
@@ -184,9 +185,9 @@ public class AudioVideoStaff {
                 request.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.print("old="+leaveRequests.size());
+                       // System.out.print("old="+leaveRequests.size());
                         leaveRequests.add(new LeaveRequest(fromfield.getText().toString(),tillfield.getText().toString(),reasonfield.getText().toString(),userfield.getText().toString(),departmentList.getSelectedItem().toString(),typeList.getSelectedItem().toString()));
-                        System.out.print("new="+leaveRequests.size()+"user="+leaveRequests.get(1).getUsername());
+                       // System.out.print("new="+leaveRequests.size()+"user="+leaveRequests.get(1).getUsername());
                         jFrame1.setVisible(false);
                     }
                 });
@@ -208,7 +209,7 @@ public class AudioVideoStaff {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new Update(leaveRequests,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
+                    new Update(logisticsRequestses,leaveRequests,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }

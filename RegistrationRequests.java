@@ -10,7 +10,7 @@ public class RegistrationRequests {
     private String uniqueID;
 
 
-    RegistrationRequests(String usernameentered,String passwordenterd,String uniqueID,String nameentered,String departmentselected,String typeselected,String dateentered,String addressentered,String genderentered)
+    RegistrationRequests(String usernameentered,String passwordenterd,String uniqueID,String nameentered,String genderentered,String addressentered,String departmentselected,String dateentered,String typeselected)
     {
         this.departmentselected=departmentselected;
         this.usernameentered=usernameentered;

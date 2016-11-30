@@ -4,9 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-/**
- * Created by Siddharth on 11/29/2016.
- */
 public class RegistrationRequestsView {
     private JFrame jFrame;
     private JPanel jPanel;
@@ -30,13 +27,13 @@ public class RegistrationRequestsView {
     RegistrationRequestsView(ArrayList<RegistrationRequests> registrationRequestses,ArrayList<Database> databases,ArrayList<ElectricityStaff> electricityStaffs,ArrayList<AudioVideoStaff>audioVideoStaffs,ArrayList<DepartmentSupervisors> departmentSupervisorses,ArrayList<HousekeepingStaff> housekeepingStaffs,ArrayList<HVACStaff> hvacStaffs,ArrayList<SecurityStaff> securityStaffs) {
         jFrame = new JFrame();
         jPanel = new JPanel();
-        audioVideoStaffs = new ArrayList<AudioVideoStaff>();
-        housekeepingStaffs = new ArrayList<HousekeepingStaff>();
-        securityStaffs = new ArrayList<SecurityStaff>();
-        hvacStaffs = new ArrayList<HVACStaff>();
-        electricityStaffs = new ArrayList<ElectricityStaff>();
-        departmentSupervisorses=new ArrayList<DepartmentSupervisors>();
-        databases=new ArrayList<Database>();
+        this.audioVideoStaffs = new ArrayList<AudioVideoStaff>();
+        this.housekeepingStaffs = new ArrayList<HousekeepingStaff>();
+        this.securityStaffs = new ArrayList<SecurityStaff>();
+        this.hvacStaffs = new ArrayList<HVACStaff>();
+        this.electricityStaffs = new ArrayList<ElectricityStaff>();
+        this.departmentSupervisorses=new ArrayList<DepartmentSupervisors>();
+        this.databases=new ArrayList<Database>();
 //        JScrollPane listScroller = new JScrollPane(jPanel);
 //        listScroller.setPreferredSize(new Dimension(250, 80));
 //        listScroller.setAlignmentX(LEFT_ALIGNMENT);
@@ -44,7 +41,7 @@ public class RegistrationRequestsView {
         int c = 0;
         jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
 
-        System.out.println(registrationRequestses.size());
+        //System.out.println(registrationRequestses.size());
         if(registrationRequestses.size()==1)
         {
             JPanel jPanel1 = new JPanel();
@@ -54,23 +51,7 @@ public class RegistrationRequestsView {
             jPanel1.add(norequest);
             jPanel.add(jPanel1);
         }
-        else {
-            JPanel jPanel1 = new JPanel();
-            jPanel1.setLayout(new FlowLayout());
-            jPanel1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-            JLabel serial = new JLabel("S. No.");
-            JLabel name = new JLabel("Name");
-            JLabel department = new JLabel("Department");
-            JLabel post = new JLabel("Type");
-            JLabel approve = new JLabel("Approve");
-            JLabel reject = new JLabel("Reject");
-            jPanel1.add(serial);
-            jPanel1.add(name);
-            jPanel1.add(department);
-            jPanel1.add(post);
-            jPanel1.add(approve);
-            jPanel1.add(reject);
-            jPanel.add(jPanel1);
+        else{
             for (RegistrationRequests i : registrationRequestses) {
                 if(c>0) {
                     JPanel jPanel2 = new JPanel();
@@ -119,49 +100,66 @@ public class RegistrationRequestsView {
             this.hvacStaffs=hvacStaffs;
             this.electricityStaffs=electricityStaffs;
             this.departmentSupervisorses=departmentSupervisorses;
+            this.databases=databases;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            for(RegistrationRequests i:fullarray)
-            {
 
-                if(i.getNameentered().equals(requests.getNameentered())) {
-                    fullarray.remove(i);
-                    departmentselected = i.getDepartmentselected();
-                    passwordenterd = new String(i.getPasswordenterd());
-                    addressentered = i.getAddressentered();
-                    dateentered = i.getDateentered();
-                    nameentered = i.getNameentered();
-                    genderentered = i.getGenderentered();
-                    typeselected = i.getTypeselected();
-                    uniqueID=i.getUniqueID();
-                    databases.add(new Database(uniqueID,passwordenterd,departmentselected,typeselected,usernameentered,nameentered,"Available"));
-                    if (typeselected.equals("Staff")) {
-                        if (departmentselected.equals("Electricity")) {
-                            electricityStaffs.add(new ElectricityStaff(nameentered,usernameentered,passwordenterd,uniqueID,"Available","None","NOT STARTED"));
-                        }
-                        if (departmentselected.equals("Security")) {
-                            securityStaffs.add(new SecurityStaff(nameentered,usernameentered,passwordenterd,uniqueID,"Available","None","NOT STARTED"));
+        int c=0;
+            for(RegistrationRequests i:fullarray) {
+                if (c > 0) {
+                    if (i.getUsernameentered().equals(requests.getUsernameentered())) {
 
+                        departmentselected = i.getDepartmentselected().toString();
+                        passwordenterd = new String(i.getPasswordenterd());
+                     //   System.out.println("Password entered:" + passwordenterd);
+                        addressentered = i.getAddressentered();
+                        dateentered = i.getDateentered();
+                        nameentered = i.getNameentered();
+                        genderentered = i.getGenderentered();
+                        typeselected = i.getTypeselected().toString();
+                        uniqueID = i.getUniqueID();
+                        usernameentered = i.getUsernameentered();
+                        fullarray.remove(i);
+                        System.out.println("Unique ID:" + uniqueID);
+                        System.out.println("Department:" + departmentselected);
+                        System.out.println("type:" + typeselected);
+                        System.out.println("Usrname:" + usernameentered);
+                        System.out.println("Name:" + nameentered);
+                        System.out.println("old size="+databases.size());
+                        databases.add(new Database(uniqueID, passwordenterd, departmentselected, typeselected, usernameentered, nameentered, "Available"));
+                        System.out.println("new size="+databases.size());
+                        if (typeselected.equals("Staff")) {
+                            System.out.println("ini"+audioVideoStaffs.size());
+                            if (departmentselected.equals("Electricity")) {
+                                electricityStaffs.add(new ElectricityStaff(nameentered, usernameentered, passwordenterd, uniqueID, "Available", "None", "NOT STARTED"));
+                            }
+                            if (departmentselected.equals("Security")) {
+                                securityStaffs.add(new SecurityStaff(nameentered, usernameentered, passwordenterd, uniqueID, "Available", "None", "NOT STARTED"));
+
+                            }
+                            if (departmentselected.equals("Housekeeping")) {
+                                housekeepingStaffs.add(new HousekeepingStaff(nameentered, usernameentered, passwordenterd, uniqueID, "Available", "None", "NOT STARTED"));
+                            }
+                            if (departmentselected.equals("HVAC")) {
+                                hvacStaffs.add(new HVACStaff(nameentered, usernameentered, passwordenterd, uniqueID, "Available", "None", "NOT STARTED"));
+                            }
+                            if (departmentselected.equals("Audio-Video")) {
+                               // System.out.println("old size of audio"+audioVideoStaffs.size());
+                                audioVideoStaffs.add(new AudioVideoStaff(nameentered, usernameentered, passwordenterd, uniqueID, "Available", "None", "NOT STARTED"));
+                                //System.out.println("new size of audio"+audioVideoStaffs.size());
+                            }
+                        } else if (typeselected.equals("Supervisor")) {
+                            departmentSupervisorses.add(new DepartmentSupervisors(nameentered, usernameentered, passwordenterd, uniqueID, departmentselected));
                         }
-                        if (departmentselected.equals("Housekeeping")) {
-                            housekeepingStaffs.add(new HousekeepingStaff(nameentered,usernameentered,passwordenterd,uniqueID,"Available","None","NOT STARTED"));
-                        }
-                        if (departmentselected.equals("HVAC")) {
-                            hvacStaffs.add(new HVACStaff(nameentered,usernameentered,passwordenterd,uniqueID,"Available","None","NOT STARTED"));
-                        }
-                        if (departmentselected.equals("Audio-Video")) {
-                            audioVideoStaffs.add(new AudioVideoStaff(nameentered,usernameentered,passwordenterd,uniqueID,"Available","None","NOT STARTED"));
-                        }
+                        break;
                     }
-                    else if (typeselected.equals("Supervisor"))
-                    {
-                        departmentSupervisorses.add(new DepartmentSupervisors(nameentered,usernameentered,passwordenterd,uniqueID,departmentselected));
-                    }
-                    break;
-                }
+
+                } else
+                    c++;
             }
+
             jFrame.setVisible(false);
             new RegistrationRequestsView(fullarray,databases,electricityStaffs,audioVideoStaffs,departmentSupervisorses,housekeepingStaffs,hvacStaffs,securityStaffs);
 

@@ -14,7 +14,7 @@ public class Login {
     private JButton login;
     private String userentered;
     private String passwordentered;
-    Login(ArrayList<AssignTask> assignTasks,ArrayList<RegistrationRequests> registrationRequestses,JFrame jFrame, ArrayList<Database> databases,ArrayList<AudioVideoStaff> audioVideoStaffs,ArrayList<ElectricityStaff> electricityStaffs,ArrayList<HousekeepingStaff> housekeepingStaffs,ArrayList<HVACStaff> hvacStaffs,ArrayList<SecurityStaff> securityStaffs,ArrayList<DepartmentSupervisors> departmentSupervisorses)
+    Login(ArrayList<LeaveRequest> leaveRequests,ArrayList<LogisticsRequests> logisticsRequestses,ArrayList<AssignTask> assignTasks,ArrayList<RegistrationRequests> registrationRequestses,JFrame jFrame, ArrayList<Database> databases,ArrayList<AudioVideoStaff> audioVideoStaffs,ArrayList<ElectricityStaff> electricityStaffs,ArrayList<HousekeepingStaff> housekeepingStaffs,ArrayList<HVACStaff> hvacStaffs,ArrayList<SecurityStaff> securityStaffs,ArrayList<DepartmentSupervisors> departmentSupervisorses)
     {
         jFrame.setSize(1800,1800);
         username=new JLabel("Username :");
@@ -50,7 +50,7 @@ public class Login {
                 passwordentered=new String(passfield.getPassword());
                 JFrame jf1 = new JFrame("ERROR !");
                 jf1.setSize(401, 401);
-                System.out.print(databases.size());
+                //System.out.print(databases.size());
                 jf1.setDefaultCloseOperation(jf1.EXIT_ON_CLOSE);
                 if (userentered.length()==0){ JOptionPane.showMessageDialog(jf1, "Username field is empty ! ");}
                 else if(passwordentered.length()==0){JOptionPane.showMessageDialog(jf1, "Password field is empty !");}
@@ -67,28 +67,38 @@ public class Login {
                                 JOptionPane.showMessageDialog(jf1, "Login Successfull !");
                                 jFrame.setVisible(false);
                                 jFrame.remove(jPanel);
-                                int check;
-                                if (databases.get(i).getPost().equals("Staff"))
-                                    check = 0;
-                                else
-                                    check = 1;
                                 String dep = databases.get(i).getDepartment();
+                               // System.out.println(dep+" "+databases.get(i).getPost());
+
                                 if (dep.equals("Admin")) {
                                   // System.out.print(registrationRequestses.size());
-                                    new Admin(assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
-                                } else {
-                                    if (dep.equals("Housekeeping")) {
-                                        new HousekeepingStaff(jFrame, housekeepingStaffs, departmentSupervisorses, check);
-                                    } else if (dep.equals("Security")) {
-                                        new SecurityStaff(jFrame, securityStaffs, departmentSupervisorses, check);
-                                    } else if (dep.equals("Audio-Video")) {
-                                        new AudioVideoStaff(jFrame, audioVideoStaffs, departmentSupervisorses, check);
-                                    } else if (dep.equals("Electricity")) {
-                                        new ElectricityStaff(jFrame, electricityStaffs, departmentSupervisorses, check);
-                                    } else if (dep.equals("HVAC")) {
-                                        new HVACStaff(jFrame, hvacStaffs, departmentSupervisorses, check);
-                                    }
+                                    new Admin(leaveRequests,logisticsRequestses,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
                                 }
+                                else if (dep.equals("Housekeeping") && databases.get(i).getPost().equals("Staff"))
+                                {
+                                    new HousekeepingStaff(leaveRequests,logisticsRequestses,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
+
+                                } else if (dep.equals("Security") && databases.get(i).getPost().equals("Staff"))
+                                {
+                                    new SecurityStaff(leaveRequests,logisticsRequestses,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
+                                }
+                                else if (dep.equals("Audio-Video") && databases.get(i).getPost().equals("Staff"))
+                                {
+
+                                    new AudioVideoStaff(leaveRequests,logisticsRequestses,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
+                                }
+                                else if (dep.equals("Electricity")&& databases.get(i).getPost().equals("Staff"))
+                                {
+                                    new ElectricityStaff(leaveRequests,logisticsRequestses,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
+                                } else if (dep.equals("HVAC")&& databases.get(i).getPost().equals("Staff"))
+                                {
+                                    new HVACStaff(leaveRequests,logisticsRequestses,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
+                                }
+                                else if(databases.get(i).getPost().equals("Supervisor"))
+                                {
+                                    new DepartmentSupervisors(leaveRequests,logisticsRequestses,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses,databases.get(i).getDepartment().toString());
+                                }
+
                             }
                             else if (flag2==0 && flag==1)
                             {

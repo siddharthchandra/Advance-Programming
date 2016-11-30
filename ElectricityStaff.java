@@ -110,18 +110,21 @@ public class ElectricityStaff {
                     submit.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                                          if(userfield.getText().length()==0 && flag1==0)
-                {
-                    flag1=1;
-                    JOptionPane.showMessageDialog(jf1, "Enter your Username !");
-                }             if(material.getText().length()==0 && flag==0)
-                {
-                    flag=1;
-                    JOptionPane.showMessageDialog(jf1, "Enter materials !");
-                }
-                            logisticsRequestses.add(new LogisticsRequests(userfield.getText().toString(),departmentList.getSelectedItem().toString(),material.getText().toString(),typeList.getSelectedItem().toString()));
-                            jFrame.setVisible(false);
-
+                            int flag=0;
+                            int flag1=0;
+                            if(userfield.getText().length()==0 && flag1==0)
+                            {
+                                flag1=1;
+                                JOptionPane.showMessageDialog(jFrame, "Enter your Username !");
+                            }         else   if(material.getText().length()==0 && flag==0)
+                            {
+                                flag=1;
+                                JOptionPane.showMessageDialog(jFrame, "Enter materials !");
+                            }
+                            if(flag==0 && flag1==0) {
+                                logisticsRequestses.add(new LogisticsRequests(userfield.getText().toString(), departmentList.getSelectedItem().toString(), material.getText().toString(), typeList.getSelectedItem().toString()));
+                                jFrame.setVisible(false);
+                            }
                         }
                     });
                 }
@@ -206,7 +209,7 @@ public class ElectricityStaff {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new Update(leaveRequests,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
+                    new Update(logisticsRequestses,leaveRequests,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }

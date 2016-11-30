@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -36,7 +37,7 @@ public class Register {
     private JButton submit;
     private JFrame jf2;
     private JButton ok;
-    Register(JFrame jFrame, ArrayList<Database> databases,ArrayList<RegistrationRequests> registrationRequestses)
+    Register(ArrayList<LeaveRequest> leaveRequests,ArrayList<LogisticsRequests> logisticsRequestses,ArrayList<AssignTask> assignTasks,ArrayList<RegistrationRequests> registrationRequestses,JFrame jFrame, ArrayList<Database> databases,ArrayList<AudioVideoStaff> audioVideoStaffs,ArrayList<ElectricityStaff> electricityStaffs,ArrayList<HousekeepingStaff> housekeepingStaffs,ArrayList<HVACStaff> hvacStaffs,ArrayList<SecurityStaff> securityStaffs,ArrayList<DepartmentSupervisors> departmentSupervisorses)
     {
         submit=new JButton("Register");
         jFrame.setSize(1800, 1800);
@@ -161,6 +162,8 @@ public class Register {
                     nameentered=namefield.getText().toString();
                     genderentered=genderList.getSelectedItem().toString();
                     typeselected=typeList.getSelectedItem().toString();
+                   // System.out.println("in register");
+                   // System.out.println("department" +departmentselected);
                     registrationRequestses.add(new RegistrationRequests(usernameentered,passwordenterd,uniqueID,nameentered,genderentered,addressentered,departmentselected,dateentered,typeselected));
                    // System.out.println(registrationRequestses.get(0).getNameentered());
                     JLabel l=new JLabel("Your registration request has been sent to the ADMIN and "+departmentselected+" Supervisor for their approval !");
@@ -177,7 +180,12 @@ public class Register {
                         public void actionPerformed(ActionEvent e) {
                             jf2.setVisible(false);
                             jFrame.setVisible(false);
-                            new Main(registrationRequestses,1);
+                            try {
+                                new Update(logisticsRequestses,leaveRequests,assignTasks,registrationRequestses,databases,audioVideoStaffs,electricityStaffs,housekeepingStaffs,hvacStaffs,securityStaffs,departmentSupervisorses);
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                            new Main();
                         }
                     });
 

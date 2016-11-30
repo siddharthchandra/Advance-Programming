@@ -3,30 +3,31 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ViewDatabase {
+/**
+ * Created by Siddharth on 11/30/2016.
+ */
+public class ViewElectricityStaff {
     private JFrame jFrame1;
     private JPanel panel;
     private JTable table;
     private DefaultTableModel model;
     private JScrollPane scrollPane;
-    ViewDatabase(ArrayList<Database> databases)
+    ViewElectricityStaff(ArrayList<ElectricityStaff> electricityStaffs)
     {
         table=new JTable();
         panel=new JPanel();
-        int rows=databases.size()-1;
+        int rows=electricityStaffs.size()-1;
         int no=1;
         int c=1;
-        String[] columns=new String[]{"S. no.","Username","Name","Department","Post","Status"};
+        String[] columns=new String[]{"S. no.","Username","Name","Status"};
         Object[][] data=new Object[rows][6];
-        for(Database i:databases)
+        for(ElectricityStaff i:electricityStaffs)
         {
             if(c==0) {
                 data[no - 1][0] = no;
                 data[no - 1][1] = i.getUsername();
                 data[no - 1][2] = i.getName();
-                data[no - 1][3] = i.getDepartment();
-                data[no - 1][4] = i.getPost();
-                data[no - 1][5] = i.getStatus();
+                data[no - 1][3] = i.getStatus();
                 no++;
             }
             else c=0;
@@ -50,7 +51,7 @@ public class ViewDatabase {
                 dim.height / 2 - table.getSize().height / 2);
         table.getTableHeader().setReorderingAllowed(false);
         jFrame1.add(panel);
-        jFrame1.setTitle("Database");
+        jFrame1.setTitle("Electricity Database");
         jFrame1.pack();
         jFrame1.setVisible(true);
     }
