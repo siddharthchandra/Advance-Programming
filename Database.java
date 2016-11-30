@@ -1,3 +1,6 @@
+/**
+ * Created by SIDDHARTH CHANDRA 2015100 & PRASOON JAIN 2015157
+ */
 public class Database {
     private String UniqueID;
     private String Password;

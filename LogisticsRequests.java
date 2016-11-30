@@ -1,5 +1,5 @@
 /**
- * Created by Siddharth on 11/29/2016.
+ * Created by SIDDHARTH CHANDRA 2015100 & PRASOON JAIN 2015157
  */
 public class LogisticsRequests {
     private String Username;

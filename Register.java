@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
-
+/**
+ * Created by SIDDHARTH CHANDRA 2015100 & PRASOON JAIN 2015157
+ */
 public class Register {
     private JTextField namefield;
     private JTextField userfield;

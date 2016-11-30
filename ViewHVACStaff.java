@@ -2,9 +2,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
-
 /**
- * Created by Siddharth on 11/30/2016.
+ * Created by SIDDHARTH CHANDRA 2015100 & PRASOON JAIN 2015157
  */
 public class ViewHVACStaff {
     private JFrame jFrame1;

@@ -4,9 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.UUID;
-
 /**
- * Created by Siddharth on 11/30/2016.
+ * Created by SIDDHARTH CHANDRA 2015100 & PRASOON JAIN 2015157
  */
 public class AddStaff {
     private JTextField namefield;

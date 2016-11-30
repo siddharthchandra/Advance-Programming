@@ -2,7 +2,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * Created by SIDDHARTH CHANDRA 2015100 & PRASOON JAIN 2015157
+ */
 public class ViewDatabase {
     private JFrame jFrame1;
     private JPanel panel;

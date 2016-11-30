@@ -3,7 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.util.Date;
-
+/**
+ * Created by SIDDHARTH CHANDRA 2015100 & PRASOON JAIN 2015157
+ */
 public class ClockPane extends JPanel {
 
     private JLabel clock = new JLabel();
